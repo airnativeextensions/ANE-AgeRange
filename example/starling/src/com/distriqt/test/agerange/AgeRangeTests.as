@@ -7,6 +7,7 @@ package com.distriqt.test.agerange
 	import com.distriqt.extension.agerange.AgeRange;
 	import com.distriqt.extension.agerange.AgeRangeRequest;
 	import com.distriqt.extension.agerange.AgeRangeResult;
+	import com.distriqt.extension.agerange.AgeRangeUserStatus;
 
 	import starling.display.Sprite;
 
@@ -51,11 +52,32 @@ package com.distriqt.test.agerange
 		//
 		//
 
+		public function setTestDetails():void
+		{
+			log( "setTestDetails()")
+			AgeRange.instance.setFakeAgeRangeResult(
+					new AgeRangeResult()
+							.setAgeLower( 13 )
+							.setAgeUpper( 15 )
+							.setUserStatus( AgeRangeUserStatus.SUPERVISED )
+							.setInstallId( "FAKE_INSTALL_ID_12345" )
+			);
+		}
+
+		public function clearTestDetails():void
+		{
+			log( "clearTestDetails()" )
+			AgeRange.instance.setFakeAgeRangeResult( null );
+		}
+
+
 		public function ageRequest():void
 		{
 			log( "ageRequest()" );
 			var request:AgeRangeRequest = new AgeRangeRequest()
 					.setAgeGates( 13, 16, 18 );
+
+
 
 			AgeRange.instance.requestAgeRange(
 					request,

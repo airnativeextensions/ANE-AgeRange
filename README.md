@@ -1,3 +1,4 @@
+
 ![](images/hero.png)
 
 >
@@ -12,7 +13,17 @@
 The [AgeRange](https://airnativeextensions.com/extension/com.distriqt.AgeRange) extension gives you access to 
 Google's *Play Age Signals API* and Apple's *Declared Age Range API* to request people to share their age range with your app.
 
-*These tools are designed to help you meet compliance obligations under certain age verification laws in jurisdictions like Texas, Utah, and Louisiana in the United States. Developers are responsible for ensuring their use of the API is compliant with all applicable regulations and Google Play policies.*
+---
+
+Age-gating in applications has always required a careful balance between safety, privacy, and platform compliance. This extension introduces unified support for modern age-verification flows on both iOS and Android, giving developers a consistent and privacy-respecting way to deliver age-appropriate content without handling sensitive personal data.
+
+On iOS 26, Apple’s new **DeclaredAgeRange** API enables apps to request an age range (for example 13+, 16+, or 18+) without ever asking for or storing a user’s birthdate. This allows developers to responsibly tailor features and content while aligning with Apple’s updated privacy and child-safety requirements.
+
+On Android, the extension integrates Google Play’s new Play Age Signals API. This API allows apps to retrieve age-related signals, notify Google Play when major app changes require renewed parental approval, and receive alerts if prior approvals are revoked. These capabilities help developers meet compliance obligations in jurisdictions with age-verification laws—such as Texas, Utah, and Louisiana—while keeping full responsibility for ensuring adherence to all applicable regulations and Google Play policies.
+
+Together, these platform-specific integrations allow developers to implement age-appropriate experiences across both ecosystems using one consistent extension, all while maintaining strong privacy protections and avoiding unnecessary collection of sensitive user data.
+
+---
 
 This extension gives you the tools to assess a user's age range and adapt your application appropriately.
 
@@ -37,8 +48,23 @@ The [documentation site](https://docs.airnativeextensions.com/docs/agerange) for
 Quick Example: 
 
 ```actionscript title="AIR"
+var request:AgeRangeRequest = new AgeRangeRequest()
+        .setAgeGates( 13, 16, 18 );
 
+AgeRange.instance.requestAgeRange(
+        request,
+        function ( result:AgeRangeResult )
+        {
+            trace( "success" );
+        },
+        function ( error:Error )
+        {
+            trace( "ageRequest ERROR: " + error.message );
+        }
+);
 ```
 
 
 ![](images/promo.png)
+
+
