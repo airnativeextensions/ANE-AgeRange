@@ -1,10 +1,10 @@
 ---
 name: Bug Issue
-about: Use this agerange for reporting a bug
+about: Use this template for reporting a bug
 labels: 'Bug'
 ---
 
-If you are reporting a bug please make sure you fill out the following information, otherwise delete this agerange and ask your question.
+If you are reporting a bug please make sure you fill out the following information, otherwise delete this template and ask your question.
 
 
 ##### Expected behaviour

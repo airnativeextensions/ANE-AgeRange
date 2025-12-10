@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Use this agerange for raising a feature request
+about: Use this template for raising a feature request
 labels: 'Feature'
 ---
 
