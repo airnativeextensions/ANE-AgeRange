@@ -85,6 +85,7 @@ package com.distriqt.test.agerange
 			
 			_tests = new AgeRangeTests( this );
 
+			addAction( "Is Eligible", _tests.isEligibleForAgeRange );
 			addAction( "Age Request", _tests.ageRequest );
 			addAction( "Set :Fake", _tests.setTestDetails );
 			addAction( "Clear :Fake", _tests.clearTestDetails );

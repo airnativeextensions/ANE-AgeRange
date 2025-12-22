@@ -34,12 +34,12 @@ package com.distriqt.test.agerange
 			_l = logger;
 			try
 			{
-				log( "AgeRange Supported: " + AgeRange.isSupported );
+				log( "AgeRange isSupported:   " + AgeRange.isSupported );
+				log( "AgeRange version:       " + AgeRange.service.version );
 				if (AgeRange.isSupported)
 				{
-					log( "AgeRange Version:   " + AgeRange.service.version );
+					log( "AgeRange nativeVersion: " + AgeRange.service.nativeVersion );
 				}
-
 			}
 			catch (e:Error)
 			{
@@ -51,6 +51,23 @@ package com.distriqt.test.agerange
 		////////////////////////////////////////////////////////
 		//
 		//
+
+
+		public function isEligibleForAgeRange():void
+		{
+			log( "isEligibleForAgeRange()" );
+			AgeRange.instance.isEligibleForAgeRange(
+					function ( eligible:Boolean ):void
+					{
+						log( "isEligibleForAgeRange SUCCESS: " + eligible );
+					},
+					function ( error:Error ):void
+					{
+						log( "isEligibleForAgeRange ERROR: " + error.message );
+					}
+			);
+		}
+
 
 		public function setTestDetails():void
 		{
