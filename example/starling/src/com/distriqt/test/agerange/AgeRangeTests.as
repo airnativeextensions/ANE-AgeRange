@@ -7,6 +7,7 @@ package com.distriqt.test.agerange
 	import com.distriqt.extension.agerange.AgeRange;
 	import com.distriqt.extension.agerange.AgeRangeRequest;
 	import com.distriqt.extension.agerange.AgeRangeResult;
+	import com.distriqt.extension.agerange.AgeRangeService;
 	import com.distriqt.extension.agerange.AgeRangeUserStatus;
 
 	import starling.display.Sprite;
@@ -51,6 +52,12 @@ package com.distriqt.test.agerange
 		////////////////////////////////////////////////////////
 		//
 		//
+
+		public function initialise():void
+		{
+			log( "initialise()" );
+			AgeRange.instance.initialise( AgeRangeService.AMAZON_USER_AGE_VERIFICATION );
+		}
 
 
 		public function isEligibleForAgeRange():void
