@@ -5,6 +5,7 @@
 package com.distriqt.test.agerange
 {
 	import com.distriqt.extension.agerange.AgeRange;
+	import com.distriqt.extension.agerange.AgeRangeErrorCode;
 	import com.distriqt.extension.agerange.AgeRangeRequest;
 	import com.distriqt.extension.agerange.AgeRangeResult;
 	import com.distriqt.extension.agerange.AgeRangeService;
@@ -56,7 +57,7 @@ package com.distriqt.test.agerange
 		public function initialise():void
 		{
 			log( "initialise()" );
-			AgeRange.instance.initialise( AgeRangeService.AMAZON_USER_AGE_VERIFICATION );
+			AgeRange.instance.initialise( AgeRangeService.GOOGLE_AGE_SIGNALS );
 		}
 
 
@@ -78,13 +79,13 @@ package com.distriqt.test.agerange
 
 		public function setTestDetails():void
 		{
-			log( "setTestDetails()")
+			log( "setTestDetails()" )
 			AgeRange.instance.setFakeAgeRangeResult(
 					new AgeRangeResult()
-							.setAgeLower( 13 )
-							.setAgeUpper( 15 )
-							.setUserStatus( AgeRangeUserStatus.SUPERVISED )
-							.setInstallId( "FAKE_INSTALL_ID_12345" )
+							//							.setAgeLower( 13 )
+							//							.setAgeUpper( 15 )
+							.setUserStatus( AgeRangeUserStatus.NULL )
+					//							.setInstallId( "FAKE_INSTALL_ID_12345" )
 			);
 		}
 
@@ -92,6 +93,13 @@ package com.distriqt.test.agerange
 		{
 			log( "clearTestDetails()" )
 			AgeRange.instance.setFakeAgeRangeResult( null );
+			AgeRange.instance.setFakeAgeRangeError( AgeRangeErrorCode.NO_ERROR );
+		}
+
+		public function setTestError():void
+		{
+			log( "setTestError()" )
+			AgeRange.instance.setFakeAgeRangeError( AgeRangeErrorCode.NETWORK_ERROR );
 		}
 
 
@@ -100,7 +108,6 @@ package com.distriqt.test.agerange
 			log( "ageRequest()" );
 			var request:AgeRangeRequest = new AgeRangeRequest()
 					.setAgeGates( 13, 16, 18 );
-
 
 
 			AgeRange.instance.requestAgeRange(
@@ -112,7 +119,7 @@ package com.distriqt.test.agerange
 					},
 					function ( error:Error )
 					{
-						log( "ageRequest ERROR: " + error.message );
+						log( "ageRequest ERROR: [" + error.errorID + "]" + error.message );
 					}
 			);
 		}

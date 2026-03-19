@@ -3,7 +3,7 @@
 	<id>com.distriqt.test</id>
 	<filename>TestAgeRange</filename>
 	<name>TestAgeRange</name>
-	<versionNumber>0.0.1</versionNumber>
+	<versionNumber>0.0.2</versionNumber>
 
     <initialWindow>
         <content>[This value will be overwritten by Flash Builder in the output app.xml]</content>

@@ -2,4 +2,4 @@
 
 | Extension | Version | Android Lib | iOS Lib |
 | --- | --- | --- | --- |
-| com.distriqt.AgeRange | 0.2.0 | 0.0.3 | 0.0.0 |
+| com.distriqt.AgeRange | 0.3.0 | 0.0.3 | 0.0.0 |
